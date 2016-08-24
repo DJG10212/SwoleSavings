@@ -1,0 +1,144 @@
+<%
+  paginated_products = @searcher.retrieve_products if params.key?(:keywords)
+  paginated_products ||= products
+%>
+
+<% content_for :head do %>
+  <% if paginated_products.respond_to?(:total_pages) %>
+    <%= rel_next_prev_link_tags paginated_products %>
+  <% end %>
+<% end %>
+
+<!--<div data-hook="products_search_results_heading">
+  <% if products.empty? %>
+    <div data-hook="products_search_results_heading_no_results_found">
+      <%= Spree.t(:no_products_found) %>
+    </div>
+  <% elsif params.key?(:keywords) %>
+    <div data-hook="products_search_results_heading_results_found">
+      <h6 class="search-results-title"><%= Spree.t(:search_results, keywords: h(params[:keywords])) %></h6>
+    </div>
+  <% end %>
+</div>-->
+
+
+      <div class="container">
+
+<!--filters sidebar-->
+<%= render :partial => 'spree/shared/sidebar' if content_for? :sidebar %>
+
+        <!--search bar-->
+<div class="col-lg-4 pull-right">
+  <form class="navbar-form navbar-right" role="search">
+    <%= render :partial => 'spree/shared/search' %>
+  </form>
+</div>
+<!--
+<% if products.any? %>
+  <div id="products" class="inline product-listing row" data-hook>
+    <% products.each do |product| %>
+      <div class ="col-sm-6 col-md-4">
+        <% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
+        <div id="product_<%= product.id %>" class="thumbnail <%= cycle("alpha", "secondary", "", "omega secondary", name: "classes") %>" data-hook="products_list_item" itemscope itemtype="http://schema.org/Product">
+          <% cache(@taxon.present? ? [I18n.locale, current_pricing_options, @taxon, product] : [I18n.locale, current_pricing_options, product]) do %>
+            <div class="product-image">
+              <%= link_to image_tag(product.display_image.attachment(:small), itemprop: "image"), url, itemprop: 'url' %>
+            </div>
+            <div class="caption">
+              <h3>
+              <%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %>
+              </h3>
+              <p>
+                <%= link_to url, class: 'btn btn-primary' do %>
+                  <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                  <span class="price selling" itemprop="price"><%= display_price(product) %></span>
+                <% end %>
+                  </span>
+              </p>
+            </div>
+          <% end %>
+        </div>
+    </div>
+    <% end %>
+    <% reset_cycle("classes") %>
+  </div>
+<% end %>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-9">
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+    <div class="panel-title">Products</div>
+  </div>
+  <div class="panel-body">
+  <!-- Table -->
+  <table class="table table-hover">
+    <thead>
+				<tr>
+				  <th></th>
+				  <th>Name</th>
+          <th></th>
+				  <th>Price</th>
+				  <th></th>
+				</tr>
+			  </thead>
+    <tbody>
+      <% if products.any? %>
+        <% products.each do |product| %>
+          <% url = spree.product_path(product, taxon_id: @taxon.try(:id)) %>
+            <tr>
+               <td>
+                  <div class="table-image">
+                <%= link_to image_tag(product.display_image.attachment(:small), itemprop: "image"), url, itemprop: 'url' %>
+                 </div>
+              </td>
+               <td>
+                 <%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %>
+              </td>
+              <td>
+              </td>
+              <td>
+                 <%= link_to url, class: 'btn btn-primary' do %>
+                  <%= display_price(product) %>
+                 <% end %>
+              </td>
+
+            </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+        </div>
+
+
+
+
+    	   <!--END pagination-->
+
+
+
+
+
+
+
+
+
+
+<% if paginated_products.respond_to?(:total_pages) %>
+  <%= paginate paginated_products %>
+<% end %>
+</div>

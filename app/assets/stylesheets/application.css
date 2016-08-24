@@ -1,0 +1,85 @@
+
+
+.panel-push {
+  padding-top:76px;
+}
+
+.pagination-centered {
+    text-align: center;
+}
+
+.footer {
+	background-color: #232323;
+	margin-top: 60px;
+	padding-top: 35px;
+	padding-bottom: 40px;
+}
+
+h4 {
+  color: #ffffff;
+}
+
+body {
+    background-color: #F2F2F2;
+}
+
+.navbar {
+  min-height: 116px;
+	margin-bottom: 0px;
+  border-radius: 0px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 50.25px;
+    padding-bottom: 42.25px;
+  }
+
+
+.glyphicon {
+    font-size: 15px;
+}
+
+
+section {
+  padding-top: 35px;
+}
+
+.jumbotron {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  margin-bottom: 80px;
+  color: inherit;
+  background-color: #0080AF;
+}
+
+.jumbotron h1,
+.jumbotron .h1 {
+  color: #FFFFFF;
+  font-size: 45px;
+  text-transform: uppercase;
+}
+
+.form-control {
+  background-color:transparent;
+}
+
+
+.sidebar {
+  margin-top:64px;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.table-image {
+  margin-left: 50px;
+}
+
+ul {
+  list-style-type:none;
+}
+
+.badge {
+  background-color: #4caf50;
+}
